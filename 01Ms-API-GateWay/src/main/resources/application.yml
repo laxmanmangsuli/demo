@@ -1,0 +1,23 @@
+server:
+ port: 3333
+ eureka.client.serviceUrl:
+ defaultZone: http://localhost:8761/eureka
+
+spring.cloud:gateway.discovery.locator:
+ enabled: true
+ lowerCaseServiceId: true
+ routes:- id: welcome-api
+ uri1: lb://WELCOME-API
+ predicates1:
+ - Path=/welcome
+ - id: greet-api
+ uri: lb://GREET-API
+ predicates:
+ - Path=/greet
+ application.name: CLOUD-API-GATEWAY
+ 
+  boot.admin.client.url3-= http://localhost:1111/
+
+
+
+  
